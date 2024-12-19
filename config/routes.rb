@@ -3,6 +3,5 @@ Rails.application.routes.draw do
   # Root path
   root "cars#index"
   # Cars routes
-  get "cars" => "cars#index"
-  get "cars/:id" => "cars#show", as: "car"
+  resources :cars
 end
