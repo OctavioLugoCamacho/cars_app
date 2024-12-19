@@ -1,0 +1,22 @@
+<%= form_with(model: car, local: true) do |f| %>
+  <div class="card text-bg-dark w-25">
+    <div class="card-header">
+      Formulario de Vehículos
+    </div>
+    <div class="card-body">
+      <div class="mb-3">
+        <%= f.label :plate_number, "Número de placa", { class: "form-label"} %>
+        <%= f.text_field :plate_number, { class: "form-control", placeholder: "Ingrese las placas" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :model, "Modelo", { class: "form-label"} %>
+        <%= f.text_field :model, { class: "form-control", placeholder: "Ingrese el modelo" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :year, "Año", { class: "form-label"} %>
+        <%= f.text_field :year, { class: "form-control", placeholder: "Ingrese el año" } %>
+      </div>
+      <%= f.submit "Guardar", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
