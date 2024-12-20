@@ -26,7 +26,7 @@
           Año: <%= @car.year %>
         </p>
         <div class="d-flex justify-content-center"></div>
-          <%= link_to "Añadir Servicio", cars_path, class: "btn btn-success" %>
+          <%= link_to "Añadir Servicio", new_car_maintenance_service_path(@car), class: "btn btn-success" %>
           <%= link_to "Editar", edit_car_path(@car), class: "btn btn-primary" %>
           <%= link_to "Borrar", car_path(@car), data: { turbo_method: :delete }, class: "btn btn-danger" %>
       </div>
@@ -43,18 +43,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Mark</td>
-        </tr>
-        <tr>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>Mark</td>
-        </tr>
+        <% @car.maintenance_services.each do |service| %>
+          <tr>
+            <td><%= service.description %></td>
+            <td><%= service.status %></td>
+            <td><%= service.date.strftime("%-d/%-m/%y: %H:%M") %></td>
+            <td>
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="px-2">
+                  <%= link_to "Editar", "/", class: "btn btn-warning" %>
+                </div>
+                <div>
+                  <%= link_to "Borrar", "/", class: "btn btn-danger" %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
     </table>
   </div>
 </div>
