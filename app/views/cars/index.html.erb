@@ -33,16 +33,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
+                    <% car.maintenance_services.each do |service| %>
+                      <tr>
+                        <td><%= service.description %></td>
+                        <td><%= service.status %></td>
+                        <td><%= service.date.strftime("%-d/%-m/%y: %H:%M") %></td>
+                      </tr>
+                    <% end %>
                 </table>
               </div>
             </div>
