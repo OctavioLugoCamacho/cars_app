@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_19_164802) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_20_161906) do
   create_table "cars", force: :cascade do |t|
     t.string "plate_number"
     t.string "model"
@@ -18,4 +18,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_19_164802) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "maintenance_services", force: :cascade do |t|
+    t.string "description"
+    t.integer "status", default: 0
+    t.datetime "date"
+    t.integer "car_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_maintenance_services_on_car_id"
+  end
+
+  add_foreign_key "maintenance_services", "cars"
 end
