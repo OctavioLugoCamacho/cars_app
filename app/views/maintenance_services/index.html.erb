@@ -1,0 +1,21 @@
+<h1>Listado de Servicios de Mantenimiento</h1>
+<table class="table table-sm table-striped">
+  <thead>
+    <tr>
+			<th scope="col" width="10%">Vehículo</th>
+      <th scope="col" width="40%">Descripción</th>
+      <th scope="col" width="25%">Estado</th>
+      <th scope="col" width="25%">Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @maintenance_services.each do |service| %>
+      <tr>
+				<td class="align-middle"><%= service.car.plate_number %></td>
+        <td class="align-middle"><%= service.description %></td>
+        <td class="align-middle"><%= service.status %></td>
+        <td class="align-middle"><%= service.date.strftime("%-d/%-m/%y: %H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
