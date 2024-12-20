@@ -1,27 +1,54 @@
-<div class="d-flex justify-content-between align-items-center">
-  <div><h1>Listado de Vehículos</h1></div>
-  <div>
-    <%= link_to "Añadir Vehículo", new_car_path, class: "btn btn-success" %>
+<section class="mx-3">
+  <div class="d-flex justify-content-between align-items-center pb-3">
+    <div><h1>Listado de Vehículos</h1></div>
+    <div>
+      <%= link_to "Añadir Vehículo", new_car_path, class: "btn btn-success" %>
+    </div>
   </div>
-</div>
-
-<div class="accordion" id="accordionExample">
-  <% @cars.each do |car| %>
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target=<%="#collapse" + car.id.to_s %> aria-expanded="true" aria-controls=<%="collapse" + car.id.to_s %>>
-          <%= car.plate_number %>
-        </button>
-      </h2>
-      <div id=<%="collapse" + car.id.to_s %> class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          <strong>Modelo del vehículo: </strong><%= car.model %>.<br>
-          <strong>Año del vehículo: </strong><%= car.year %>.<br><br>
-          <%= link_to "Detalle", car_path(car), class: "btn btn-primary" %>
-          <%= link_to "Editar", edit_car_path(car), class: "btn btn-warning" %>
-          <%= link_to "Borrar", car_path(car), data: { turbo_method: :delete }, class: "btn btn-danger" %>
+  <div class="accordion" id="accordionExample">
+    <% @cars.each do |car| %>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target=<%="#collapse" + car.id.to_s %> aria-expanded="true" aria-controls=<%="collapse" + car.id.to_s %>>
+            <%= car.plate_number %>
+          </button>
+        </h2>
+        <div id=<%="collapse" + car.id.to_s %> class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="d-flex">
+              <div class="px-3">
+                <strong>Modelo del vehículo: </strong><%= car.model %>.<br>
+                <strong>Año del vehículo: </strong><%= car.year %>.<br><br>
+                <%= link_to "Detalle", car_path(car), class: "btn btn-primary" %>
+                <%= link_to "Editar", edit_car_path(car), class: "btn btn-warning" %>
+                <%= link_to "Borrar", car_path(car), data: { turbo_method: :delete }, class: "btn btn-danger" %>
+              </div>
+              <div class="w-75">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Descripción</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col">Fecha</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+</section>
