@@ -1,0 +1,10 @@
+<% if object.errors.any? %>
+	<div>
+    <h3 class="text-warning">No se puede continuar.</h3>
+    <ul class="text-warning">
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+	</div>
+<% end %>

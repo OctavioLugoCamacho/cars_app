@@ -16,7 +16,7 @@ class CarsController < ApplicationController
     if @car.update(car_params)
       redirect_to @car, notice: "¡Vehículo editado satisfactoriamente!"
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -29,8 +29,14 @@ class CarsController < ApplicationController
     if @car.save
       redirect_to @car, notice: "¡Vehículo creado satisfactoriamente!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @car = find_car
+    @car.destroy
+    redirect_to cars_path
   end
 
 private

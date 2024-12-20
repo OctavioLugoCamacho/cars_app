@@ -4,6 +4,7 @@
       Formulario de Vehículos
     </div>
     <div class="card-body">
+      <%= render 'shared/errors', object: car %>
       <div class="mb-3">
         <%= f.label :plate_number, "Número de placa", { class: "form-label"} %>
         <%= f.text_field :plate_number, { class: "form-control", placeholder: "Ingrese las placas" } %>
