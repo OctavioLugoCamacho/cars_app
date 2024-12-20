@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get "up" => "rails/health#show", as: :rails_health_check
   # Root path
   root "cars#index"
-  # Cars routes
-  resources :cars
+  resources :cars do
+    resources :maintenance_services
+  end
+
+  get "maintenance_services" => "maintenance_services#index"
 end
