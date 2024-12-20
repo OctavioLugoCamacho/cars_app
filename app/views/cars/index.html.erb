@@ -4,35 +4,24 @@
     <%= link_to "Añadir Vehículo", new_car_path, class: "btn btn-success" %>
   </div>
 </div>
-<table class="table table-sm table-striped">
-  <thead>
-    <tr>
-      <th scope="col" width="25%">Número de Placa</th>
-      <th scope="col" width="25%">Modelo</th>
-      <th scope="col" width="25%">Año</th>
-      <th scope="col" width="25%">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cars.each do |car| %>
-      <tr>
-        <td class="align-middle"><%= car.plate_number %></td>
-        <td class="align-middle"><%= car.model %></td>
-        <td class="align-middle"><%= car.year %></td>
-        <td class="align-middle">
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="w-25">
-              <%= link_to "Detalle", car_path(car), class: "btn btn-primary" %>
-            </div>
-            <div class="w-25">
-              <%= link_to "Editar", edit_car_path(car), class: "btn btn-warning" %>
-            </div>
-            <div class="w-25">
-              <%= link_to "Borrar", car_path(car), data: { turbo_method: :delete }, class: "btn btn-danger" %>
-            </div>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<div class="accordion" id="accordionExample">
+  <% @cars.each do |car| %>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target=<%="#collapse" + car.id.to_s %> aria-expanded="true" aria-controls=<%="collapse" + car.id.to_s %>>
+          <%= car.plate_number %>
+        </button>
+      </h2>
+      <div id=<%="collapse" + car.id.to_s %> class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>Modelo del vehículo: </strong><%= car.model %>.<br>
+          <strong>Año del vehículo: </strong><%= car.year %>.<br><br>
+          <%= link_to "Detalle", car_path(car), class: "btn btn-primary" %>
+          <%= link_to "Editar", edit_car_path(car), class: "btn btn-warning" %>
+          <%= link_to "Borrar", car_path(car), data: { turbo_method: :delete }, class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
