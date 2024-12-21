@@ -1,18 +1,17 @@
 class CarsController < ApplicationController
+  before_action :find_car, only: [ :show, :edit, :update, :destroy ]
+
   def index
     @cars = Car.all
   end
 
   def show
-    @car = find_car
   end
 
   def edit
-    @car = find_car
   end
 
   def update
-    @car = find_car
     if @car.update(car_params)
       redirect_to @car, notice: "¡Vehículo editado satisfactoriamente!"
     else
@@ -34,7 +33,6 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    @car = find_car
     @car.destroy
     redirect_to cars_path, alert: "¡Vehículo eliminado satisfactoriamente!"
   end
@@ -47,6 +45,6 @@ private
   end
 
   def find_car
-    Car.find(params[:id])
+    @car = Car.find(params[:id])
   end
 end
