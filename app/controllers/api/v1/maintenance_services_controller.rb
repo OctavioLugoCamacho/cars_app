@@ -5,12 +5,10 @@ class Api::V1::MaintenanceServicesController < ApplicationController
   # GET /api/v1/maintenance_services
   def index
     @maintenance_services = MaintenanceService.all
-    render json: @maintenance_services
   end
 
   # GET /api/v1/maintenance_services/1
   def show
-    render json: @maintenance_service
   end
 
   # POST /api/v1/maintenance_services

@@ -5,12 +5,10 @@ class Api::V1::CarsController < ApplicationController
   # GET /api/v1/cars
   def index
     @cars = Car.all
-    render json: @cars
   end
 
   # GET /api/v1/cars/1
   def show
-    render json: @car
   end
 
   # POST /api/v1/cars
