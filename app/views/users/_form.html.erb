@@ -1,0 +1,29 @@
+<%= form_with(model: user, local: true) do |f| %>
+  <div class="d-flex justify-content-center">
+    <div class="card text-bg-dark w-50">
+      <div class="card-header">
+        Formulario de Usuarios
+      </div>
+      <div class="card-body">
+        <%= render 'shared/errors', object: user%>
+        <div class="mb-3">
+          <%= f.label :name, "Nombre", { class: "form-label"} %>
+          <%= f.text_field :name, { class: "form-control", placeholder: "Ingrese el nombre" } %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :email, "Correo", { class: "form-label"} %>
+          <%= f.text_field :email, { class: "form-control", placeholder: "Ingrese el correo" } %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password, "Contraseña", { class: "form-label"} %>
+          <%= f.password_field :password, { class: "form-control", placeholder: "Ingrese la contraseña" } %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password_confirmation, "Confirmar Contraseña", { class: "form-label"} %>
+          <%= f.password_field :password_confirmation, { class: "form-control", placeholder: "Confirme la contraseña" } %>
+        </div>
+        <%= f.submit "Guardar", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

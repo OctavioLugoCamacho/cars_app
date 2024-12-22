@@ -1,0 +1,23 @@
+<h1>Listado de Usuarios</h1>
+<table class="table table-sm table-striped">
+  <thead>
+    <tr>
+			<th scope="col">Nombre</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Fecha de Creación</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+				<td class="align-middle"><%= user.name %></td>
+        <td class="align-middle"><%= user.email %></td>
+        <td class="align-middle"><%= user.created_at.strftime("%-d/%-m/%y: %H:%M") %></td>
+        <td class="align-middle">
+          <%= link_to "Detalle", user_path(user), class: "btn btn-primary" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
