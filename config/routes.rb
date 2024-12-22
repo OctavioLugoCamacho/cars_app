@@ -6,4 +6,11 @@ Rails.application.routes.draw do
   end
 
   get "maintenance_services" => "maintenance_services#index"
+
+  namespace :api do
+    namespace :v1 do
+      resources :cars
+      resources :maintenance_services
+    end
+  end
 end
