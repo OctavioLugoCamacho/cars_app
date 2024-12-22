@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_20_161906) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_22_204536) do
   create_table "cars", force: :cascade do |t|
     t.string "plate_number"
     t.string "model"
@@ -27,6 +27,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_20_161906) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_maintenance_services_on_car_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "maintenance_services", "cars"

@@ -26,9 +26,11 @@
           Año: <%= @car.year %>
         </p>
         <div class="d-flex justify-content-center"></div>
-          <%= link_to "Añadir Servicio", new_car_maintenance_service_path(@car), class: "btn btn-success" %>
-          <%= link_to "Editar", edit_car_path(@car), class: "btn btn-primary" %>
-          <%= link_to "Borrar", car_path(@car), data: { turbo_method: :delete }, class: "btn btn-danger" %>
+          <% if current_user_admin? %>
+            <%= link_to "Añadir Servicio", new_car_maintenance_service_path(@car), class: "btn btn-success" %>
+            <%= link_to "Editar", edit_car_path(@car), class: "btn btn-primary" %>
+            <%= link_to "Borrar", car_path(@car), data: { turbo_method: :delete }, class: "btn btn-danger" %>
+          <% end %>
       </div>
     </div>
   </div>
@@ -39,7 +41,9 @@
           <th scope="col">Descripción</th>
           <th scope="col">Estado</th>
           <th scope="col">Fecha</th>
-          <th scope="col">Acciones</th>
+          <% if current_user_admin? %>
+            <th scope="col">Acciones</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -48,13 +52,15 @@
             <td><%= service.description %></td>
             <td><%= service.status %></td>
             <td><%= service.date.strftime("%-d/%-m/%y: %H:%M") %></td>
-            <td>
-              <div class="d-flex justify-content-center align-items-center">
-                <div>
-                  <%= link_to "Borrar", car_maintenance_service_path(service), data: { turbo_method: :delete }, class: "btn btn-danger" %>
+            <% if current_user_admin? %>
+              <td>
+                <div class="d-flex justify-content-center align-items-center">
+                  <div>
+                    <%= link_to "Borrar", car_maintenance_service_path(service), data: { turbo_method: :delete }, class: "btn btn-danger" %>
+                  </div>
                 </div>
-              </div>
-            </td>
+              </td>
+            <% end %>
           </tr>
         <% end %>
     </table>
