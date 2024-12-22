@@ -1,0 +1,20 @@
+<%= form_with(url: sessions_path, local: true) do |f| %>
+  <div class="d-flex justify-content-center">
+    <div class="card text-bg-dark w-25">
+      <div class="card-header">
+        Iniciar Sesión
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <%= f.label :email, "Correo", { class: "form-label"} %>
+          <%= f.text_field :email, { class: "form-control", placeholder: "Ingrese el correo" } %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password, "Contraseña", { class: "form-label"} %>
+          <%= f.password_field :password, { class: "form-control", placeholder: "Ingrese la contraseña" } %>
+        </div>
+        <%= f.submit "Iniciar Sesión", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
