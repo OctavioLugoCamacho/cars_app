@@ -19,3 +19,6 @@
     <% end %>
   </tbody>
 </table>
+<div class="d-flex justify-content-center pt-5">
+  <%= will_paginate @cars, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

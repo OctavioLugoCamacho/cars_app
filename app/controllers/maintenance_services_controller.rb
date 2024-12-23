@@ -2,7 +2,7 @@ class MaintenanceServicesController < ApplicationController
   before_action :find_car, only: [ :new, :create ]
 
   def index
-    @maintenance_services = MaintenanceService.all
+    @maintenance_services = MaintenanceService.all.paginate(page: params[:page], per_page: 10)
   end
 
   def new

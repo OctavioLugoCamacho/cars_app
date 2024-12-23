@@ -2,7 +2,7 @@ class CarsController < ApplicationController
   before_action :find_car, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @cars = Car.all
+    @cars = Car.all.paginate(page: params[:page], per_page: 8)
   end
 
   def show
