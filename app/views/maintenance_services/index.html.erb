@@ -13,7 +13,17 @@
       <tr>
 				<td class="align-middle"><%= service.car.plate_number %></td>
         <td class="align-middle"><%= service.description %></td>
-        <td class="align-middle"><%= service.status %></td>
+        <td class="align-middle">
+          <% if service.status == "completed" %>
+            <span class="text-success">Completado</span>
+          <% end %>
+          <% if service.status == "in_progress" %>
+            <span class="text-warning">En progreso</span>
+          <% end %>
+          <% if service.status == "pending" %>
+            <span class="text-primary">Pendiente</span>
+          <% end %>
+        </td>
         <td class="align-middle"><%= service.date.strftime("%-d/%-m/%y: %H:%M") %></td>
       </tr>
     <% end %>

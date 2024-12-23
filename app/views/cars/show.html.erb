@@ -50,7 +50,17 @@
         <% @car.maintenance_services.each do |service| %>
           <tr>
             <td><%= service.description %></td>
-            <td><%= service.status %></td>
+            <td>
+              <% if service.status == "completed" %>
+                <span class="text-success">Completado</span>
+              <% end %>
+              <% if service.status == "in_progress" %>
+                <span class="text-warning">En progreso</span>
+              <% end %>
+              <% if service.status == "pending" %>
+                <span class="text-primary">Pendiente</span>
+              <% end %>
+            </td>
             <td><%= service.date.strftime("%-d/%-m/%y: %H:%M") %></td>
             <% if current_user_admin? %>
               <td>
