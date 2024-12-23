@@ -27,23 +27,35 @@ You must download this repository and run the following commands:
 In order to see all the functionality of the application, an admin user is required. To create it, follow these steps:
 - Run your app with `rails s`
 - Visit [https://localhost:3000](https://localhost:3000).
-- Select create user in the Navbar.
-- Open the console and run this:
+- Select create user in the navigation bar and follow the necessary steps until you see that your user has been created and logged in.
+- Then open the console and run this:
 ```console
 ~$ rails c
+```
+- Find your user by searching for it by the name you entered
+```console
 cars-app(dev)> u = User.find_by_name("UserName")
   User Load (0.6ms)  SELECT "users".* FROM "users" WHERE "users"."name" = 'Octavio Lugo' LIMIT 1 /*application='CarsApp'*/
 => 
 #<User:0x000000011fff92e8
 ...
+```
+- Make it administrator
+```console
 cars-app(dev)> u.admin = true
 => true
+```
+- Save it
+```console
 cars-app(dev)> u.save
   TRANSACTION (0.1ms)  BEGIN immediate TRANSACTION /*application='CarsApp'*/
   User Exists? (0.6ms)  SELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('octaviolugocamacho@gmail.com') AND "users"."id" != 21 LIMIT 1 /*application='CarsApp'*/
   User Update (0.1ms)  UPDATE "users" SET "updated_at" = '2024-12-23 04:28:56.147531', "admin" = 1 WHERE "users"."id" = 21 /*application='CarsApp'*/
   TRANSACTION (0.6ms)  COMMIT TRANSACTION /*application='CarsApp'*/
 => true
+```
+- Close the rails console
+```console
 cars-app(dev)> exit
 ```
 - With these commands you can turn your user into an administrator
