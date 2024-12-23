@@ -37,7 +37,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% car.maintenance_services.each do |service| %>
+                    <% car.maintenance_services.take(3).each do |service| %>
                       <tr>
                         <td><%= service.description %></td>
                         <td><%= service.status %></td>
