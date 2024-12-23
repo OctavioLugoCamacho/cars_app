@@ -62,3 +62,23 @@ cars-app(dev)> exit
 
 ## Testing
 Use the `rspec spec/controllers/cars_controller_spec.rb` command to run the tests that were added with rspec.
+
+## Run API
+To test the routes created for the REST API it is necessary to run the project with `rails s`. Use Postman to run the following services:
+
+### Car Paths
+- Get all cars (`GET https://localhost:3000/api/v1/cars`)
+- Get one car (`GET https://localhost:3000/api/v1/cars/:id`)
+- Create a car (`POST https://localhost:3000/api/v1/cars`)
+- Update a car (`PUT/PATCH https://localhost:3000/api/v1/cars/:id`)
+- Delete a car (`DELETE https://localhost:3000/api/v1/cars/:id`)
+
+### MaintenanceService Paths
+- Get all maintenance_services (`GET https://localhost:3000/api/v1/maintenance_services`)
+- Get one maintenance_service (`GET https://localhost:3000/api/v1/maintenance_services/:id`)
+- Create a maintenance_service (`POST https://localhost:3000/api/v1/maintenance_services`)
+- Update a maintenance_service (`PUT/PATCH https://localhost:3000/api/v1/maintenance_services/:id`)
+- Delete a maintenance_service (`DELETE https://localhost:3000/api/v1/maintenance_services/:id`)
+
+
+
