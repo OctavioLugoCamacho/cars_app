@@ -26,7 +26,7 @@ You must download this repository and run the following commands:
 ## User creation
 In order to see all the functionality of the application, an admin user is required. To create it, follow these steps:
 - Run your app with `rails s`
-- Visit [Link text Here](https://localhost:3000).
+- Visit [https://localhost:3000](https://localhost:3000).
 - Select create user in the Navbar.
 - Open the console and run this:
 ```console
